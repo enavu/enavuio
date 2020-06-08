@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Ena Vu</title>
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <!-- Plugin CSS -->
+</head>
+
+<body id="page-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <a class="navbar-brand page-scroll" href="/">enavu.io</a>
+
+    </nav>
+    <!--Start of instagram tiles-->
+      <section>
+           
+        <div class="container">
+      
+              
+            <div class="row">
+                <h3>Linear Regression with Python</h3>
+                <h5>This article is written for developers who have intermediate level of coding and already have their python environment setup. Go <a target="_blank" href='https://code.visualstudio.com/docs/python/python-tutorial'>here</a> if you do not have that setup.</h3>
+                <h5>Visual Studio Code:  Python, Sklearn, numpy, panda and matplot</h5>
+                <br>
+                <br>
+
+                <p> The last time I heard about Linear Regression was probably in my undergraduate years, where I was taking exams on probabilities, differential equations, 
+                    derivatives and the worst, abstract mathematics.</p>    
+                <p> Little did I know I would be coming back to calculate the slope and intercept in my career, in which they now call, machine learning!  Let's get to the point:</p>    
+                <p> <b>Situation</b> - Data was coming in through from a separate channel that was considered "garbage data" compared to the source of truth, so calculations on the data were misrepresented. </p>   
+                <p> <b>Task</b> - Apply linear regression to perform predictive analysis, to calculate a correction factor of the predicted percent difference between the source of truth and the separate channel on a given day, using only the past 30 days of data for that day. </p>   
+                <p> <b>Action</b> - Research a best method practice to automate the calculation and not perform manually with excel.</p>    
+                <p> <b>Result</b> - Utilized python with libraries matplot, numpy, panda and sklearn to loop through data in 10 lines of code and calculate the offset. </p> 
+                <p> Time taken: 4h of research/ meeting with data scientist/ env setup. 6h development </p>
+                <p> <b>Firstly:</b> Import the data and fit the x and y plot using sklearn’s linear regression -  
+                    <p>1. Use the library numpy to perform data manipulation and put into an array that’s analyzable by sklearn.  Define your x and y axis data.</p>
+                    <p>2. Fit the x and y axis with Sklearns Linear Regression</p> 
+                    <p> Matplot.pyplot will scatter plot your data for you, if you need a visualization. </p>
+                <p>  
+                <div class="col-sm"><script src="https://gist.github.com/enavu/2d52e4c0a9e464e2de4a665fc0e8a227.js"></script>
+                </p>
+                
+                <p> <b>Secondly: </b> Was it doing what I expected?  Let’s validate in excel using Slope() and Intercept() function.  BAM, matches.. but wait, my purpose is to automate this thing where I performed predictive analysis on the previous 30 days. </p>
+                <p> 1. Panda has a .tail() function that grabs the current row plus x amount of rows before it.  </p>
+                <p> 2. It also has an itertuple method that would help me loop through each day. </p>
+                <p> I also don’t want to include the current day in the analysis, so instead, I got back 31 days and remove the very last row for correct predictions.   Since I deleted that row, I need to make sure to start where there is data with length len function where > 0.</p>
+                <p> <script src="https://gist.github.com/enavu/d9edf96de9aaf87f3aeaa3832373e8da.js"></script></p>
+                <p><b>Third: </b>Don’t forget you need two extra columns to store the slope and intercept so, I created those rows (line 10 and 13) with panda as well, then in my loop, I update those values utilizing the date as my indexing and the coef_ and intercept_ in Sklearn’s Library.</p>
+                <p>
+                    <script src="https://gist.github.com/enavu/a369e1f3d065928ebc62e33fab9c7025.js"></script>
+                </p>
+                <p>Voila!! Last thing to do is save this back into my folder with to_csv, but in reality when working with big data you want to hit the cluster with it as well as make sure you are utilizing the correct machines that can handle the row amount! 
+
+                Hope I was able to share some insight to machine learning and predictive analysis!!
+                </p>
+                <p>- Ena Vu 5/29/2019</p>
+            </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <!-- Theme JavaScript -->
+    <script src="js/new-age.min.js"></script>
+</body>
+
+</html>
